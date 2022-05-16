@@ -56,7 +56,7 @@ namespace ElJuegoSpirit
 
 
             piedra = new PIEDRUM(this, new Point(200, 300));
-            caballo = new Horse(this, new Point(400, 300));
+            caballo = new Horse(this);
             enemigo = new JinetteEnemigo(this, new Point(100,100));
             diamante = new Diamond(this, new Point(31, 300));
 
