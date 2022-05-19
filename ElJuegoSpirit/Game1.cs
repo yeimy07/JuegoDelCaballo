@@ -9,6 +9,7 @@ namespace ElJuegoSpirit
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        
 
          private  int  move = 0;
 
@@ -55,9 +56,9 @@ namespace ElJuegoSpirit
             // nuevo codigo
 
 
-            piedra = new PIEDRUM(this, new Point(200, 300));
-            caballo = new Horse(this);
-            enemigo = new JinetteEnemigo(this, new Point(100,100));
+            piedra = new PIEDRUM(this, new Point(100, 300));
+           // caballo = new Horse(this);
+            enemigo = new JinetteEnemigo(this, new Point(100,300));
             diamante = new Diamond(this, new Point(31, 300));
 
             base.Initialize();
@@ -71,8 +72,12 @@ namespace ElJuegoSpirit
             fondo = Content.Load<Texture2D>("fondoo");
             //caballito1 = Content.Load<Texture2D>("caballo");
             //jinete1 = Content.Load<Texture2D>("jinette01");
-           // piedra1 = Content.Load<Texture2D>("piedra01");
+            // piedra1 = Content.Load<Texture2D>("piedra01");
             //diamante1 = Content.Load<Texture2D>("diamante01");
+            for (int i = 0; i < 3; i++)
+            {
+                caballo = new Horse(Content.Load<Texture2D>("c" + (i + 1), new Vector2 (50,50));
+            }
         }
 
         protected override void Update(GameTime gameTime)

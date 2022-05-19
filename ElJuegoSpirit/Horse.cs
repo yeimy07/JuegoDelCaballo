@@ -10,7 +10,7 @@ namespace ElJuegoSpirit
     class Horse 
     {
         public int x = 100;
-        public int y = 100;
+        public int y = 230;
         private int tiempo = 0;
         private int tiempoInterno=0;
         private int contSalto =0;
@@ -98,7 +98,7 @@ namespace ElJuegoSpirit
 public void Draw(GameTime gameTime, SpriteBatch spriteBatch, Color _color)
         {
             
-            spriteBatch.Draw(imagenes[CamImage], new Rectangle(x,y, 300,200), _color);
+            spriteBatch.Draw(imagenes[CamImage], new Rectangle(x,y, 160,160), _color);
         }
 
         
