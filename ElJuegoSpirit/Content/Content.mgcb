@@ -61,6 +61,12 @@
 /processorParam:TextureFormat=Color
 /build:c3.png
 
+#begin cancion.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:cancion.mp3
+
 #begin diamante01.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -139,4 +145,10 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:piedra01.png
+
+#begin relinche.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:relinche.mp3
 
