@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using System;
 
 namespace ElJuegoSpirit
 {
@@ -28,10 +29,10 @@ namespace ElJuegoSpirit
         Diamond diamante;
 
         private Song musicaFondo;
-        SoundEffect   relincheCaballo;
+        
 
         private SpriteFont texto;
-        private Vector2 posiTexto = new Vector2(370,50);
+        private Vector2 posiTexto = new Vector2(370,50);// posicion del texto en pntalla
 
 
         public Game1()
@@ -70,11 +71,11 @@ namespace ElJuegoSpirit
             
 
             musicaFondo = Content.Load<Song>("cancion");
-            relincheCaballo = Content.Load<SoundEffect>("relinche");
-            MediaPlayer.Play(musicaFondo);
-            MediaPlayer.IsRepeating = true;
 
-            texto = Content.Load<SpriteFont>("letra");
+            MediaPlayer.Play(musicaFondo);   // para que suene el disco
+            MediaPlayer.IsRepeating = true;// para que siempre se repita
+
+            texto = Content.Load<SpriteFont>("letra");// cargando fuente
             
 
 
@@ -95,25 +96,32 @@ namespace ElJuegoSpirit
             caballo.Update(gameTime);
             enemigo.Update(gameTime);
             diamante.Update(gameTime);
-            
-            move = move + 1;
-            if (move < 50)
+            try
             {
-                x = x - 1;
-                rectangulo1 = new Rectangle(x, y, 1050, 500);
-            }
+                move = move + 1;
+                if (move < 50)
+                {
+                    x = x - 1;
+                    rectangulo1 = new Rectangle(x, y, 1050, 500);
+                }
 
 
-            if (move>50)
-            {
-                x = x + 1;
-                rectangulo1 = new Rectangle(x, y, 1050, 500);
-            }
+                if (move > 50)
+                {
+                    x = x + 1;
+                    rectangulo1 = new Rectangle(x, y, 1050, 500);
+                }
 
-            if (move == 100)
-            {
-                move = 0;
+                if (move == 100)
+                {
+                    move = 0;
+                }
             }
+            catch (DivideByZeroException e)
+            {
+                Console.Write(" No se puede dividir por cero");
+            }
+           
 
             base.Update(gameTime);
         }

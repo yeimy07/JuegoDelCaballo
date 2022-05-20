@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace ElJuegoSpirit
 {
@@ -39,52 +40,67 @@ namespace ElJuegoSpirit
         {
             var Kstate = Keyboard.GetState();
 
-            tiempo++;
-            if (Kstate.IsKeyDown(Keys.Space) == true)
+            try
             {
-
-                salto = 1;
-
-            }
-            if (salto == 1)
-            {
-
-                CamImage = 1;
-                y -= 100;
-                salto = 0;
-                contSalto = 1;
-
-            }
-            if (tiempo % 30 == 0 && contSalto == 1)
-            {
-                CamImage += 1;//todrau
-                x += 100;
-                y += 200;
-
-                contSalto = 0;
-                if (CamImage >= 2)
+                tiempo++;
+                if (Kstate.IsKeyDown(Keys.B) == true)
                 {
-                    CamImage = 0;
+
+                    salto = 1;
+
                 }
-            }
-
-
-
-            if (Kstate.IsKeyDown(Keys.Q))
-            {
-                if (x < 1000)
+                if (salto == 1)
                 {
-                    CamImage += 1;
-                    x += 5;
 
+                    CamImage = 1;
+                    y -= 100;
+                    salto = 0;
+                    contSalto = 1;
 
-                    if (CamImage > 2)
+                }
+                if (tiempo % 30 == 0 && contSalto == 1)
+                {
+                    CamImage += 1;//todrau
+                    x += 100;
+                    y += 200;
+
+                    contSalto = 0;
+                    if (CamImage >= 2)
                     {
                         CamImage = 0;
                     }
                 }
-
             }
+            catch (DivideByZeroException e)
+            {
+                Console.Write(" NO se puede dividir por cero");
+            }
+            
+
+            try
+            {
+                if (Kstate.IsKeyDown(Keys.Q))
+                {
+                    if (x < 1000)
+                    {
+                        CamImage += 1;
+                        x += 5;
+
+
+                        if (CamImage > 2)
+                        {
+                            CamImage = 0;
+                        }
+                    }
+
+                }
+            }
+            catch( FormatException e)
+            {
+                Console.Write(" debe presionar la tecla derecha");
+            }
+
+           
         }
 
         public new void Draw(GameTime gameTime, SpriteBatch spriteBatch, Color _color)
