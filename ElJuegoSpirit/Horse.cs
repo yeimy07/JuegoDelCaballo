@@ -63,42 +63,7 @@ namespace ElJuegoSpirit
         public void Update(GameTime gameTime)
         {
             var Kstate = Keyboard.GetState();
-            // position += velocity;
-
-            // if (Keyboard.GetState().IsKeyDown(Keys.Right)) velocity.X = 3f;
-            // else (Keyboard.GetState().IsKeyDown(Keys.Left) velocity.Y = -3f; else velocity.X = 0f;
-
-            // if (Keyboard.GetState().IsKeyDown(Keys.Space) && Hasjumped == false)
-            // {
-            // position.Y -= 10f;
-            // velocity.Y = -5f;
-            // Hasjumped = true;
-
-            //}
-
-            // if ( Hasjumped == true)
-            // {
-            // float i = 1;
-            //    velocity.Y += 0.15f * i;
-
-            // }
-
-            // if( position.Y + Texture.Height >= 450)
-            //{
-            //    Hasjumped = true;
-            //}
-
-            // if (Hasjumped == false)
-            // {
-            //     velocity.Y = 0f;
-
-            // }
-
-
-
-
-
-
+      
             try
             {
                 tiempo++;
@@ -152,7 +117,7 @@ namespace ElJuegoSpirit
                             CamImage = 0;
                         
 
-                        if (x <= 0)
+                        if (x <= 0)// para que no se salga de la pantalla
                         {
                             x = x * (-1);
                         }
@@ -170,14 +135,7 @@ namespace ElJuegoSpirit
             
         }
 
-        public void colisionLimite(Vector2 ventana)
-        {
-
-        }
-
-
-
-
+      
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch, Color _color)
         {
 

@@ -6,7 +6,7 @@ namespace ElJuegoSpirit
     class Diamond : sprites
     {
  
-        Game1 root;//ruta
+        Game1 root;//root
         public Diamond(Game1 theRoot, Point laPosicion) : base(laPosicion, new Point(50, 50))
         {
 
