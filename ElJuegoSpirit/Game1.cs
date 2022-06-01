@@ -16,6 +16,12 @@ namespace ElJuegoSpirit
          private  int  move = 0;
          public Rectangle rectangulo1;
          public Texture2D fondo;
+        private Texture2D imag;
+        private Texture2D over;
+        private bool menu;
+        private int contDiamantes;
+        private int vida;
+        
         
         public int x;
         public int y;
@@ -48,8 +54,10 @@ namespace ElJuegoSpirit
             x = -50;
             y = 1;
             rectangulo1 = new Rectangle(x,y,1050,500);
-           
 
+            menu = true;
+            vida = 5;
+            contDiamantes = 0;
 
             // nuevo codigo
 
@@ -68,8 +76,8 @@ namespace ElJuegoSpirit
 
             // TODO: use this.Content to load your game content here
             fondo = Content.Load<Texture2D>("fondoo");
-            
-
+            imag = Content.Load<Texture2D>("inicio");
+            over = Content.Load<Texture2D>("gameOver");
             musicaFondo = Content.Load<Song>("cancion");
 
             MediaPlayer.Play(musicaFondo);   // para que suene el disco
@@ -91,6 +99,11 @@ namespace ElJuegoSpirit
             
 
             KeyboardState keysState = Keyboard.GetState();
+
+            if (keysState.IsKeyDown(Keys.Enter))
+            {
+                menu = false;
+            }
 
             piedra.Update(gameTime);
             caballo.Update(gameTime);
@@ -121,7 +134,12 @@ namespace ElJuegoSpirit
             {
                 Console.Write(" No se puede dividir por cero");
             }
-           
+           // colisiones
+
+            if (piedra.rectangulo.Intersects(caballo.rectCaballo))
+            {
+                vida -= 1;
+            }
 
             base.Update(gameTime);
         }
@@ -133,15 +151,31 @@ namespace ElJuegoSpirit
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
 
-            _spriteBatch.Draw(fondo, rectangulo1, Color.White);
-           
-            // codigo nuevo
+            
 
-            piedra.Draw(gameTime, _spriteBatch, Color.White);
-            caballo.Draw(gameTime, _spriteBatch, Color.White);
-            enemigo.Draw(gameTime, _spriteBatch, Color.White);
-            diamante.Draw(gameTime, _spriteBatch, Color.White);
-            _spriteBatch.DrawString(texto,"SPIRIT",posiTexto,Color.Black);
+            if (menu == true)
+            {
+                _spriteBatch.Draw(imag, new Rectangle(1, 1, 800, 600), Color.White);
+            }
+            if (vida < 0)
+            {
+                _spriteBatch.Draw(over, new Rectangle(1, 1, 800, 600), Color.White);
+            }
+            else
+            {
+                _spriteBatch.Draw(fondo, rectangulo1, Color.White);
+
+                // codigo nuevo
+
+                piedra.Draw(gameTime, _spriteBatch, Color.White);
+                caballo.Draw(gameTime, _spriteBatch, Color.White);
+                enemigo.Draw(gameTime, _spriteBatch, Color.White);
+                diamante.Draw(gameTime, _spriteBatch, Color.White);
+                _spriteBatch.DrawString(texto, "DIAMANTES "+ contDiamantes + " VIDAS "+ vida, posiTexto, Color.Black);
+               // _spriteBatch.DrawString(texto, "SPIRIT", , Color.Black);
+              
+
+            }
             _spriteBatch.End();
 
             base.Draw(gameTime);

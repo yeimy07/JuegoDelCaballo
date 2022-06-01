@@ -26,6 +26,7 @@ namespace ElJuegoSpirit
         public void Update(GameTime gameTime)
         {
             tiempo++;
+
         }
 
         public new void Draw(GameTime gameTime, SpriteBatch spriteBatch, Color _color)
@@ -51,6 +52,10 @@ namespace ElJuegoSpirit
                     rectangulo = new Rectangle(x + 250, 300, 50, 50);
                     spriteBatch.Draw(imagen, rectangulo, _color);
 
+                }
+                if(tiempo > 300)
+                {
+                    tiempo = 0;
                 }
             }
             catch (DivideByZeroException e)

@@ -34,19 +34,19 @@ namespace ElJuegoSpirit
                 
                if  (tiempo > 50 && tiempo < 100)
                 {
-                    rectangulo = new Rectangle(x+10, 300, 200, 100);
+                    rectangulo = new Rectangle(x+10, 300, 140, 100);
                     spriteBatch.Draw(imagen, rectangulo, _color);
                 }
                 if (tiempo > 120 && tiempo < 170)
                 {
-                    rectangulo = new Rectangle(x + 150, 300, 200, 100);
+                    rectangulo = new Rectangle(x + 150, 300, 140, 100);
                     spriteBatch.Draw(imagen, rectangulo, _color);
 
                 }
 
                 if (tiempo > 200 && tiempo < 250)
                 {
-                    rectangulo = new Rectangle(x + 350, 300, 200, 100);
+                    rectangulo = new Rectangle(x + 350, 300, 140, 100);
                     spriteBatch.Draw(imagen, rectangulo, _color);
 
                 }

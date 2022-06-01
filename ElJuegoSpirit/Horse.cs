@@ -19,6 +19,7 @@ namespace ElJuegoSpirit
         private int contSalto = 0;
         private int salto = 0;
         SoundEffect relincheCaballo;
+        public Rectangle rectCaballo = new Rectangle(100, 250, 160 ,160);
 
         // codigo ensayo pa que salte
         Game1 root; // ruta
@@ -51,6 +52,8 @@ namespace ElJuegoSpirit
         public void Update(GameTime gameTime)
         {
             var Kstate = Keyboard.GetState();
+            rectCaballo.X = x;
+            rectCaballo.Y = y;
       
             try
             {
@@ -105,10 +108,11 @@ namespace ElJuegoSpirit
                             CamImage = 0;
                         
 
-                        if (x <= 50)// para que no se salga de la pantalla
-                        {
-                            x = 100;
-                        }
+                      //  if (x <= 50)// para que no se salga de la pantalla
+                       // {
+                            //x = 100;
+                               // y = 230;
+                        //}
                     }
                     }
 
@@ -127,7 +131,7 @@ namespace ElJuegoSpirit
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch, Color _color)
         {
 
-            spriteBatch.Draw(imagenes[CamImage], new Rectangle(x, y, 160, 160), _color);
+            spriteBatch.Draw(imagenes[CamImage], rectCaballo, _color);
         }
     
 
