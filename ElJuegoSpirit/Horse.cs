@@ -20,15 +20,6 @@ namespace ElJuegoSpirit
         private int salto = 0;
         SoundEffect relincheCaballo;
 
-
-        // public Point position { get; set; }
-        // Vector2 position;
-        // Vector2 velocity;
-
-        //bool Hasjumped;
-
-
-
         // codigo ensayo pa que salte
         Game1 root; // ruta
 
@@ -37,13 +28,10 @@ namespace ElJuegoSpirit
 
         public Horse(Game1 theRoot)
         {
-            //this.position = laPosicion;
             this.imagenes = new Texture2D[3];
             this.root = theRoot;
             
-           // this.ventanaTamano = new Vector2(graficos.PreferredBackBufferWidth, graficos.PreferredBackBufferHeight);
-            // this.position = newposition;
-            // this.Hasjumped = true;
+        
 
             this.LoadContent();
 
@@ -82,7 +70,7 @@ namespace ElJuegoSpirit
                     contSalto = 1;
 
                 }
-                if (tiempo % 30 == 0 && contSalto == 1)
+                if (tiempo % 50 == 0 && contSalto == 1)
                 {
                     CamImage += 1;//todrau
                     x += 100;
@@ -117,9 +105,9 @@ namespace ElJuegoSpirit
                             CamImage = 0;
                         
 
-                        if (x <= 0)// para que no se salga de la pantalla
+                        if (x <= 50)// para que no se salga de la pantalla
                         {
-                            x = x * (-1);
+                            x = 100;
                         }
                     }
                     }

@@ -32,9 +32,9 @@ namespace ElJuegoSpirit
             try
             {
                 
-               if  (tiempo > 50 && tiempo < 100);
-            {
-                    rectangulo = new Rectangle(x, 300, 200, 100);
+               if  (tiempo > 50 && tiempo < 100)
+                {
+                    rectangulo = new Rectangle(x+10, 300, 200, 100);
                     spriteBatch.Draw(imagen, rectangulo, _color);
                 }
                 if (tiempo > 120 && tiempo < 170)

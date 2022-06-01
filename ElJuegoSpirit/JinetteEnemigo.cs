@@ -8,7 +8,7 @@ namespace ElJuegoSpirit
     class JinetteEnemigo : sprites
     {
 
-        private int x = 100;
+        private int x = 10;
         private int y = 230;
         private int tiempo = 0;
         private int tiempoInterno = 0;
