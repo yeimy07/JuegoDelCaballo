@@ -21,6 +21,9 @@ namespace ElJuegoSpirit
         private bool menu;
         private int contDiamantes;
         private int vida;
+        private int tiempo=0;
+        private bool t;
+        private int auxiliar;
         
         
         public int x;
@@ -56,8 +59,9 @@ namespace ElJuegoSpirit
             rectangulo1 = new Rectangle(x,y,1050,500);
 
             menu = true;
-            vida = 5;
+            vida = 2000;
             contDiamantes = 0;
+            tiempo = 50;
 
             // nuevo codigo
 
@@ -76,7 +80,8 @@ namespace ElJuegoSpirit
 
             // TODO: use this.Content to load your game content here
             fondo = Content.Load<Texture2D>("fondoo");
-            imag = Content.Load<Texture2D>("inicio");
+            imag = Content.Load<Texture2D>("play" +
+                "");
             over = Content.Load<Texture2D>("gameOver");
             musicaFondo = Content.Load<Song>("cancion");
 
@@ -111,6 +116,33 @@ namespace ElJuegoSpirit
             diamante.Update(gameTime);
             try
             {
+
+                
+                if (piedra.rectangulo.Intersects(caballo.rectCaballo))
+                {
+                    auxiliar += 1;
+                    vida -=1;
+                    t = true;
+         
+                   if(auxiliar % 50 == 0)
+                    {
+                        vida -= 1;
+                    }
+                
+                }
+                 if ( vida <= 0)
+                {
+                    vida = 0;
+                }
+                 
+                t = false;
+
+
+                if (diamante.rectangulo.Intersects(caballo.rectCaballo))
+                {
+                    contDiamantes += 1;
+                   
+                }
                 move = move + 1;
                 if (move < 50)
                 {
@@ -136,10 +168,7 @@ namespace ElJuegoSpirit
             }
            // colisiones
 
-            if (piedra.rectangulo.Intersects(caballo.rectCaballo))
-            {
-                vida -= 1;
-            }
+           
 
             base.Update(gameTime);
         }
@@ -157,23 +186,29 @@ namespace ElJuegoSpirit
             {
                 _spriteBatch.Draw(imag, new Rectangle(1, 1, 800, 600), Color.White);
             }
-            if (vida < 0)
-            {
-                _spriteBatch.Draw(over, new Rectangle(1, 1, 800, 600), Color.White);
-            }
+           
             else
             {
-                _spriteBatch.Draw(fondo, rectangulo1, Color.White);
 
-                // codigo nuevo
+                if (vida == 0)
+                {
+                    _spriteBatch.Draw(over, new Rectangle(1, 1, 800, 600), Color.White);
+                }
+                else
+                {
+                    _spriteBatch.Draw(fondo, rectangulo1, Color.White);
 
-                piedra.Draw(gameTime, _spriteBatch, Color.White);
-                caballo.Draw(gameTime, _spriteBatch, Color.White);
-                enemigo.Draw(gameTime, _spriteBatch, Color.White);
-                diamante.Draw(gameTime, _spriteBatch, Color.White);
-                _spriteBatch.DrawString(texto, "DIAMANTES "+ contDiamantes + " VIDAS "+ vida, posiTexto, Color.Black);
-               // _spriteBatch.DrawString(texto, "SPIRIT", , Color.Black);
-              
+                    // codigo nuevo
+
+                    piedra.Draw(gameTime, _spriteBatch, Color.White);
+                    caballo.Draw(gameTime, _spriteBatch, Color.White);
+                    enemigo.Draw(gameTime, _spriteBatch, Color.White);
+                    diamante.Draw(gameTime, _spriteBatch, Color.White);
+                    _spriteBatch.DrawString(texto, "DIAMANTES " + contDiamantes + " VIDAS " + vida, posiTexto, Color.Black);
+                    // _spriteBatch.DrawString(texto, "SPIRIT", , Color.Black);
+                }
+
+
 
             }
             _spriteBatch.End();

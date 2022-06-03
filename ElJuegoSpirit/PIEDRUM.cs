@@ -50,6 +50,11 @@ namespace ElJuegoSpirit
                     spriteBatch.Draw(imagen, rectangulo, _color);
 
                 }
+
+                if (tiempo> 300)
+                {
+                    tiempo = 0;
+                }
             }
             catch (DivideByZeroException e)
             {
